@@ -18,7 +18,7 @@ Page({
     minday:today,
     maxday:maxday,
     tabs: ["人找车"],
-    activeIndex: 0,
+    activeIndex: 2,
     sliderOffset: 0,
     sliderLeft: 0,
     start:'',
@@ -101,7 +101,7 @@ this.getList()
             }
         })
 
-        that.setData({list:list,list1:list1,list2:list2});
+        that.setData({list:list,list1:list1,list2:list2,  nomore: true});
     })
 
   },
@@ -149,9 +149,11 @@ this.getList()
           header: { 'Content-Type': 'application/json' },
           success: function(res){
             that.setData({
-              start:res.data.result.addressComponent.city
+              // start:res.data.result.addressComponent.city
+              start:''
+
             })
-            that.getList(that.data.date,res.data.result.addressComponent.city);
+            that.getList();
           }
         })
       }

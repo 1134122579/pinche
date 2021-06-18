@@ -13,7 +13,7 @@ Page({
     start: minday,
     end:maxday,
     time:'请选择时间',
-    types:[{name: '1', value: '车找人'},{name: '2', value: '人找车',checked: true}],
+    types:[{name: '1', value: '车找人',checked: true},{name: '2', value: '人找车'}],
     Surpluss:['请选择',1,2,3,4,5,6],
     surplus:0,
     isAgree: false,
@@ -50,55 +50,68 @@ Page({
     var that = this;
     console.log(data);
 
-    if(data.name == ''){
-      util.isError('请输入姓名', that);
-      return false;
-    }
-    if(data.gender == 0){
-      util.isError('请选择性别', that);
-      return false;
-    }
+    // if(data.name == ''){
+    //   util.isError('请输入姓名', that);
+    //   return false;
+    // }
+    // if(data.gender == 0){
+    //   util.isError('请选择性别', that);
+    //   return false;
+    // }
 
-    if(data.phone == ''){
-      util.isError('请输入手机号码', that);
-      return false;
-    }
+    // if(data.phone == ''){
+    //   util.isError('请输入手机号码', that);
+    //   return false;
+    // }
 
-    if(!(/^1[34578]\d{9}$/.test(data.phone))){
-      util.isError('手机号码错误', that);
-      return false;
-    }
-    if(that.data.departure == '出发地'){
-      util.isError('请选择出发地', that);
-      return false;
-    }
-    if(that.data.destination == '目的地'){
-      util.isError('请选择目的地', that);
-      return false;
-    }
-    if(data.time == '请选择时间'){
-      util.isError('请选择出发时间', that);
-      return false;
-    }
-    if(data.surplus == '0'){
-      var arr = new Array('','剩余空位','乘车人数');
-      util.isError('请选择'+arr[data.type], that);
-      return false;
-    }
+    // if(!(/^1[34578]\d{9}$/.test(data.phone))){
+    //   util.isError('手机号码错误', that);
+    //   return false;
+    // }
+    // if(that.data.departure == '出发地'){
+    //   util.isError('请选择出发地', that);
+    //   return false;
+    // }
+    // if(that.data.destination == '目的地'){
+    //   util.isError('请选择目的地', that);
+    //   return false;
+    // }
+    // if(data.time == '请选择时间'){
+    //   util.isError('请选择出发时间', that);
+    //   return false;
+    // }
+    // if(data.surplus == '0'){
+    //   var arr = new Array('','剩余空位','乘车人数');
+    //   util.isError('请选择'+arr[data.type], that);
+    //   return false;
+    // }
 
     
-    if(!data.isAgree[0]){
-      util.isError('请阅读并同意条款',that);
-      return false;
-    }
+    // if(!data.isAgree[0]){
+    //   util.isError('请阅读并同意条款',that);
+    //   return false;
+    // }
     data.sk = app.globalData.sk;
     data.departure = that.data.departure;
     data.destination = that.data.destination;
+   
+    wx.showLoading({
+      title: '认证中...',
+      mask: true,
+      success: (res) => {},
+      fail: (res) => {},
+      complete: (res) => {},
+    })
+setTimeout(() => {
+  wx.hideLoading()
+  wx.switchTab({
+    url: '/pages/my/index',
+  })
+}, 1500);
+return
     util.req('info/add',data,function(data){
       if(data.status == 1){
-        wx.redirectTo({
-          url: '/pages/info/index?id='+data.info
-        });
+       
       }else{
         util.isError(data.msg,that);
         return false;

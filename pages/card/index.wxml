@@ -3,7 +3,7 @@
         <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorMsg}}</view>
 
         <form bindsubmit="formSubmit">
-            <view class="weui-cells__title">确认联系人信息</view>
+            <view class="weui-cells__title">个人信息</view>
             <view class="weui-cells weui-cells_after-title">
                 <view class="weui-cell weui-cell_input">
                     <view class="weui-cell__hd">
@@ -36,20 +36,9 @@
                 </view>
             </view>
         
-            <view class="weui-cells__title">填写拼车信息</view>
-            <view class="weui-cells weui-cells_after-title">
-                <!-- <view class="weui-cell weui-cell_input">
-                    <view class="weui-cell__hd">
-                        <view class="weui-label">拼车类型</view>
-                    </view>
-                    <view class="weui-cell__bd">
-                        <radio-group class="radio-group weui-cell weui-check__label" name="type" bindchange="selectType">
-                            <label class="radio" wx:for="{{types}}" wx:key="value">
-                                <radio value="{{item.name}}" checked="{{item.checked}}"/><text>{{item.value}}</text>
-                            </label>
-                        </radio-group>
-                    </view>
-                </view> -->
+            <!-- <view class="weui-cells__title">填写拼车信息</view> -->
+            <!-- <view class="weui-cells weui-cells_after-title">
+        
                 <view class="weui-cell weui-cell_input StartAndStop">
                     <view class="weui-cell__hd">
                         <view class="weui-label">出发地</view>
@@ -66,7 +55,6 @@
                         <view class="weui-input stop" bindtap="sexDestination">{{destination}}</view>
                     </view>
                 </view>
-                <!-- <image src="/img/to.png" class="to1"></image> -->
                         
                 <view class="weui-cell weui-cell_input">
                     <view class="weui-cell__hd">
@@ -128,17 +116,17 @@
                     </view>
                     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                 </view>
-            </view>
-            <view class="weui-cells__title">其他信息</view>
+            </view> -->
+            <!-- <view class="weui-cells__title">其他信息</view>
             <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
                     <textarea class="weui-textarea" name="remark" placeholder="更多情况,请输入说明" style="height: 3.3em" />
                 </view>
             </view>
-        </view>
+        </view> -->
 
-        <checkbox-group bindchange="bindAgreeChange" name="isAgree">
+        <!-- <checkbox-group bindchange="bindAgreeChange" name="isAgree">
             <label class="weui-agree" for="weuiAgree">
                 <view class="weui-agree__text">
                     <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
@@ -148,7 +136,7 @@
                     阅读并同意<navigator url="/pages/notice/index?id=1" class="weui-agree__link">《免责声明》</navigator>
                 </view>
             </label>
-        </checkbox-group>
+        </checkbox-group> -->
 
         <view class="weui-btn-area">
             <button class="weui-btn" type="primary" formType="submit">确定</button>
